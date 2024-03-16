@@ -33,6 +33,7 @@ contract PaymentSplitter {
             payees.push(_payees[i]);
             emit SharesSet(_payees[i], _shares[i]);
         }
+        distributeFunds();
     }
 
     function receiveUSDT(uint256 amount) external {
@@ -40,7 +41,7 @@ contract PaymentSplitter {
         emit PaymentReceived(msg.sender, amount);
     }
 
-    function distributeFunds() external {
+    function distributeFunds() public {
         for (uint256 i = 0; i < payeeCount(); i++) {
             uint256 amount = (usdt.balanceOf(address(this)) *
                 shares[payees[i]]) / totalShares;
