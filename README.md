@@ -16,5 +16,7 @@ We are using the sybil resistance properties of world coin to ensure that the an
 We are using the world coin SDK (ID kit) to achieve this.
 
 ## Filecoin (IPC) :-
+USed IPC to generate subnets.
 
 ## HyperScale :-
+Used to communicate between IPC subnets.
