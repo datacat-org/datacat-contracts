@@ -1,4 +1,6 @@
 # Datacat 
+Datacat is a decentralised data annotation platform which provides bias free annotation capabilities by decentralizing the task of data annotation.
+We achieve this by spinning up different subnets using **IPC** that are geographically locked
 
 ## Circle :-  
 We are using Circle in our project for its smart contract platform and developer wallets capability. 
