@@ -41,6 +41,12 @@ contract PaymentSplitter {
         emit PaymentReceived(msg.sender, amount);
     }
 
+    function buy(uint256 amount) external {
+        usdt.transferFrom(msg.sender, address(this), amount);
+        emit PaymentReceived(msg.sender, amount);
+        distributeFunds();
+    }
+
     function distributeFunds() public {
         for (uint256 i = 0; i < payeeCount(); i++) {
             uint256 amount = (usdt.balanceOf(address(this)) *
