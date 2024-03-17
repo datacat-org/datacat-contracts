@@ -13,7 +13,6 @@ interface IERC20 {
 
 contract SimpleStaking {
     mapping(address => uint256) public stakedAmount;
-    mapping(address => uint256) public totalStaked;
 
     // Event emitted when a user stakes an amount
     event Staked(address indexed user, address indexed token, uint256 amount);
@@ -32,7 +31,6 @@ contract SimpleStaking {
         );
 
         stakedAmount[msg.sender] += amount;
-        totalStaked[msg.sender] += amount;
 
         emit Staked(msg.sender, token, amount);
     }
@@ -54,15 +52,7 @@ contract SimpleStaking {
     }
 
     // Function to get the total staked amount of ERC20 token for a user
-    function getTotalStaked(address user) external view returns (uint256) {
+    function getStakedBalance(address user) external view returns (uint256) {
         return stakedAmount[user];
-    }
-
-    // Function to approve spending of ERC20 tokens
-    function approveToken(
-        address token,
-        uint256 amount
-    ) external returns (bool) {
-        return IERC20(token).approve(address(this), amount);
     }
 }
